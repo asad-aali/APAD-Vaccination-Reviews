@@ -1,0 +1,65 @@
+<html><title>Welcome to Snapshot!</title>
+<head><link rel="icon" href="../static/logo-icon.png">
+    <link href="/static/alternatesearchstyle.css" rel="stylesheet" type="text/css"/>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
+  {% if not user_data %}
+    <p align="center" style="color:black;"><strong> APAD Reviews Project - Group 8</p>
+    {% endif %}
+</head>
+<body>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-analytics.js"></script>
+
+    <script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyA2ADUDmrtKRz-_F_XKBTmRZ9PSt8zOrcU",
+        authDomain: "apad-vaccine-reviews.firebaseapp.com",
+        projectId: "apad-vaccine-reviews",
+        storageBucket: "apad-vaccine-reviews.appspot.com",
+        messagingSenderId: "1006703432374",
+        appId: "1:1006703432374:web:e2d977e1aba5ad2169cc17",
+        measurementId: "G-X0PFVK1J5T",
+        serviceAccount: "keys/apad-vaccine-reviews-4d3d473a879f.json"
+    };
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    </script>
+
+    <div id="firebaseui-auth-container"></div>
+    <div id="login-info" hidden=true>
+    {% if user_data %}
+    <div class="topnav">
+      <table border = 0 width=100%>
+        <tr><td class="active">
+      <a href="{{ url_for('root') }}"><img src="../static/logo-light.png" width="130" height="40"></a></td><td class="not_active">
+      <a href="{{ url_for('preferences_show') }}">USER PREFERENCES</a></td><td class="not_active">
+      <a href="{{ url_for('preferences_set') }}">CHOOSE PREFERENCES</a></td><td class="not_active">
+      <a href="{{ url_for('view_reviews') }}">FEED</a></td><td class="not_active">
+      <a href="{{ url_for('create_theme') }}">NEW THEME</a></td><td class="not_active">
+      <a href="{{ url_for('view_themes') }}">VIEW ALL THEMES</a></td><td class="not_active">
+      <a href="{{ url_for('create_review') }}">WRITE A REVIEW</a></td><td class="not_active">
+      <a href="{{ url_for('get_geoview_page') }}">MAPS</a></td class="not_active">
+    </tr>
+    </table>
+    </div>
+    <div class="topnav_footer"><i>Welcome to <b>Snapshot</b>, the place to review local places and stuff</i></div>
+    <div style="text-align: left; padding-left: 50px; padding-top: 15px;">
+        <h2>User Information</h2>
+        <b>User Email</b><br>{{ user.email }}<br>
+        <br><b>Your prefered themes are: </b>
+        <br>
+        {% for theme in user.themes%}
+        <p><a>{{ theme }}</a></p>
+        {% endfor %}
+        <br><br>
+    {% elif error_message %}
+        <p>{{ error_message }}</p>
+    {% endif %}
+    <button style="height:40px;width:100px" id="sign-out" hidden=true><h3>Sign Out</h3></button>
+</div>
+</body>
+</html>
