@@ -11,5 +11,3 @@ As part of phase2 and phase3 we have added the following features:
 
 **Mobile App:**
   1. Mobile app with User Sign-in, View Themes categorized by posts, and Create Posts (with picture and geo location) functionality
-  2. ADDITIONAL: User Sign Up feature
-  3. ADDITIONAL: Error messages when Review details are not complete
