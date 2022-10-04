@@ -1,5 +1,5 @@
-# APAD-Vaccination-Reviews
-APAD assignment- Reviews of Vaccines, Hospitals, Pharmacies etc
+# Advanced Programming - Vaccination-Reviews
+Advanced Programming (UT Austin) Project - Reviews of Vaccines, Hospitals, Pharmacies etc
 
 As part of phase2 and phase3 we have added the following features:
 
